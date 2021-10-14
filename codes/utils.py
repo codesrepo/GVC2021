@@ -59,8 +59,8 @@ param_ROC = {
 param_UBR = {
         
         
-        "data_path":"C:/Veritas/Submission/APIX/Veritas/data/df_UBR.csv",
-        "out_path":"C:/Veritas/Submission/APIX/Veritas/output/UBR/",
+        "data_path":"/home/coder/project/GVC2021/output/UBR_corrected_data.csv",
+        "out_path":"/home/coder/project/GVC2021/output/",
         "score":"p_np_score_fix"
         }
 
