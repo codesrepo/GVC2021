@@ -87,15 +87,13 @@ scipy==1.6.2
 xgboost==1.3.3
 
 Steps to create APIX environment:
-1. #You need to run these steps to setup the environemnt, please note that due to limited RAM on APIX data was restricted to 10k records: 
-2.#create a directory "GVC2021" under /home/coder 
-3.#create a sub directory "submission" under GVC2021 
-4.#go to submission directory and run git clone https://github.com/codesrepo/GVC2021.git 
-5.#sudo apt-get update 
-6.#sudo apt-get install wget 
-7.#wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh 
-8.#sudo bash Anaconda3-2021.05-Linux-x86_64.sh 
-9.#open bashrc to edit- vim /.bashrc 
-10.#add this line - export PATH=/anaconda3/bin:$PATH 
-11.#source ~/.bashrc #conda install xgboost
+1. You need to run these steps to setup the environemnt, please note that due to limited RAM on APIX data was restricted to 10k records: 
+2. Go to project  directory and run git clone https://github.com/codesrepo/GVC2021.git 
+3. sudo apt-get update 
+4. sudo apt-get install wget 
+5. wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh 
+6. sudo bash Anaconda3-2021.05-Linux-x86_64.sh 
+7. open bashrc to edit- vim /.bashrc 
+8. add this line - export PATH=/anaconda3/bin:$PATH 
+9. source ~/.bashrc #conda install xgboost
 
