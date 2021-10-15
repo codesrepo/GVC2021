@@ -4,6 +4,14 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
+param_TEST_MASTER = {
+        
+        "test_master_data_path":"/home/coder/project/GVC2021/data/TEST_MASTER.csv",
+        "fairness_out_path":"/home/coder/project/GVC2021/TEST_MASTER_OUTPUT/FAIRNESS_REPORTS/",
+        "cba_out_path":"/home/coder/project/GVC2021/TEST_MASTER_OUTPUT/CBA_REPORTS/",
+
+        }
+
 param_data_preprocessing = {
         
         "train_path":"/home/coder/project/GVC2021/data/application_train.csv",
@@ -37,7 +45,7 @@ param_ROC = {
         "data_path":"/home/coder/project/GVC2021/output/ROC_corrected_data_1.csv",
         "out_path":"/home/coder/project/GVC2021/output/",
         "target":"TARGET",
-        "score":"prediction_prob",
+        "score":"prediction_ROC",
         "apply_ROC_attribute":'AGE',
         "privileged_group":1,
         "base_trheshold":0.91,
@@ -61,7 +69,7 @@ param_UBR = {
         
         "data_path":"/home/coder/project/GVC2021/output/UBR_corrected_data.csv",
         "out_path":"/home/coder/project/GVC2021/output/",
-        "score":"p_np_score_fix"
+        "score":"cd .."
         }
 
 
@@ -76,15 +84,15 @@ def cost_benefit_analysis(df,target,score):
   bads = []
   thresh = []
   
-  for i in range(0,100):
+  for i in range(0,1000):
       try:
-        threshold = i*0.01
+        threshold = i*0.001
         temp_total = df[target][df[score]>=threshold].count()
         temp_goods = df[target][df[score]>=threshold].sum()
         total.append(temp_total)
         goods.append(temp_goods)
         bads.append(temp_total-temp_goods)
-        thresh.append(np.round(threshold,2))
+        thresh.append(np.round(threshold,3))
       except:
         print(thresh)
   return pd.DataFrame({"threshold":thresh,"total":total,"goods":goods,"bads":bads})

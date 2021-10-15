@@ -38,7 +38,8 @@ print('original test roc is: ' , roc_auc_score(HC_test['TARGET'], HC_test['p_np_
 HC_test['p_score'] =  0
 
 #HC_train['p_np_score_fix'] =  model.predict_proba(HC_train[keep_feature+ ['p_score']])[:,1]
-HC_test['p_np_score_fix'] =   model.predict_proba(HC_test[keep_feature+ ['p_score']])[:,1]
+HC_test['p_np_score_fix'] =   model.predict_proba(HC_test[keep_feature+ ['p_score']])[:,0]
+HC_test['TARGET'] = 1-HC_test['TARGET']
 HC_test.to_csv(param_UBR["out_path"]+"UBR_corrected_data.csv",index=False)
 
 #print('correct train roc is: ' ,roc_auc_score(HC_train['TARGET'], HC_train['p_np_score_fix']))

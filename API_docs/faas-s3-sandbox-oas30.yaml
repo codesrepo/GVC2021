@@ -1,0 +1,289 @@
+openapi: "3.0.1"
+info:
+  title: "Experian FaaS APIs v1"
+  description: "Experian Fairness as a service APIs"
+  version: "2021-10-12T01:34:29Z"
+servers:
+- url: "https://srvm9v706a.execute-api.ap-southeast-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: "/sandbox"
+paths:
+  /api/faas/upload:
+    post:
+      parameters:
+      - name: "Content-Type"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "Accept"
+        in: "header"
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Empty"
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Empty"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      security:
+      - api_key: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /api/faas/report:
+    get:
+      parameters:
+      - name: "serviceid"
+        in: "query"
+        required: true
+        schema:
+          type: "string"
+      - name: "requestid"
+        in: "query"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            content-encoding:
+              schema:
+                type: "string"
+          content:
+            application/zip:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      security:
+      - api_key: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /api:
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /api/faas:
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /api/faas/process:
+    post:
+      parameters:
+      - name: "requestid"
+        in: "header"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/faasinput"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      security:
+      - api_key: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+components:
+  schemas:
+    Empty:
+      title: "Empty Schema"
+      type: "object"
+    faasinput:
+      title: "FaaS process input schema"
+      required:
+      - "N_DECISION_THRESHOLDS"
+      - "POSTCODE_COL"
+      - "PREDICTION_COL"
+      - "ProtectedAttributeColumn"
+      - "ProtectedAttributeName"
+      - "SCORE_COL"
+      - "SENSITIVE_COL"
+      - "SERVICE_ID"
+      - "TARGET_COL"
+      - "metrics"
+      - "privilegedFilter"
+      - "privilegedValue"
+      - "protected_attributes"
+      - "unPrivilegedFilter"
+      - "unPrivilegedValue"
+      type: "object"
+      properties:
+        PREDICTION_COL:
+          title: "The PREDICTION_COL schema"
+          type: "string"
+          description: "The predicted 1/0 output."
+          default: "prediction"
+        N_DECISION_THRESHOLDS:
+          title: "The N_DECISION_THRESHOLDS schema"
+          type: "string"
+          description: "Number of splits on score for fairness evaluation."
+          default: "100"
+        SENSITIVE_COL:
+          title: "The SENSITIVE_COL schema"
+          type: "string"
+          description: "Same as the protected column."
+          default: ""
+        POSTCODE_COL:
+          title: "The POSTCODE_COL schema"
+          type: "string"
+          description: "Column name on which normative data is merged with the base data."
+          default: "Region_Code"
+        ProtectedAttributeColumn:
+          title: "The ProtectedAttributeColumn schema"
+          type: "string"
+          description: "The protected attribute on which fairness assessment is to be done."
+          default: "CODE_GENDER"
+        privilegedValue:
+          title: "The privilegedValue schema"
+          type: "string"
+          description: "Value assigned to the privileged group."
+          default: "1"
+        unPrivilegedValue:
+          title: "The unPrivilegedValue schema"
+          type: "string"
+          description: "Value assigned to the under-privileged group."
+          default: "0"
+        SCORE_COL:
+          title: "The SCORE_COL schema"
+          type: "string"
+          description: "Score column, can store the value generated by predict_proba function of the model object."
+          default: "prediction_prob"
+        TARGET_COL:
+          title: "The TARGET_COL schema"
+          type: "string"
+          description: "The actual target or "Y" values."
+          default: "target"
+        ProtectedAttributeName:
+          title: "The ProtectedAttributeName schema"
+          type: "string"
+          description: "Name assigned to the protected group."
+          default: "CODE_GENDER"
+        privilegedFilter:
+          title: "The privilegedFilter schema"
+          type: "string"
+          description: "Logic to filter priviliged group members."
+          default: "==1"
+        unPrivilegedFilter:
+          title: "The unPrivilegedFilter schema"
+          type: "string"
+          description: "Logic to filter under-priviliged group members."
+          default: "==0"
+        protected_attributes:
+          title: "The protected_attributes schema"
+          type: "string"
+          description: "Attribute to be used for running normative data assessment approach."
+          default: "['NoReligion']"
+        metrics:
+          title: "The metrics schema"
+          type: "string"
+          description: "Normative approach metrices."
+          default: "['disparate_impact','equal_opportunity_difference']"
+        SERVICE_ID:
+          title: "SERVICE_ID"
+          type: "string"
+          description: "Service ID to specify the required service. Accepted values\
+            \ are threshold_correction, faas_report, normative_report"
+          default: ""
+      additionalProperties: true
+      default: {}
+  securitySchemes:
+    api_key:
+      type: "apiKey"
+      name: "x-api-key"
+      in: "header"

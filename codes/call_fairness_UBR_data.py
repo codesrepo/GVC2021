@@ -26,7 +26,7 @@ if __name__ == '__main__':
         save_path = param_UBR["out_path"]+"%s_UBR_fairness_plot.png"%(metric)
         df_metrices = pd.read_csv(path_temp)
         df_metrices=df_metrices[df_metrices.threshold>0.85]
-        line_plot(df_metrices,'Score','Fairness values','Fairness report- Base model (%s)'%(metric),['threshold'],["threshold"]+param_fairness['track_metrices'],'threshold','value',vertical=0.95,save_path=save_path)
+        line_plot(df_metrices,'Score','Fairness values','Fairness report- UBR  model (%s)'%(metric),['threshold'],["threshold"]+param_fairness['track_metrices'],'threshold','value',vertical=0.95,save_path=save_path)
         
         
   

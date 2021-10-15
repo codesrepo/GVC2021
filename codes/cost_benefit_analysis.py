@@ -16,7 +16,10 @@ if __name__ == '__main__':
     for file_path in data_path_list:
         df_temp = pd.read_csv(file_path)
         metric = data_type_list[c]
-        if data_type_list[c]=="UBR":
+        if metric=="UBR":
+            print("Running UBR correction....")
+            #df_temp[param_fairness['target']]=1-df_temp[param_fairness['target']]
+            #df_temp['p_np_score_fix']=1-df_temp['p_np_score_fix']
             cba_UBR = cost_benefit_analysis(df_temp,param_fairness['target'],"p_np_score_fix")
         else:
             cba_UBR = cost_benefit_analysis(df_temp,param_fairness['target'],param_fairness['score'])

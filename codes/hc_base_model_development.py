@@ -21,7 +21,7 @@ df_test = df_test.reset_index()
 
 
 trn_columns = list(df_train.columns)
-drop_columns = ["p_score_T","p_np_score_T","p_np_score_fix_T"]
+drop_columns = ["p_score","p_np_score","p_np_score_fix"]
 protected_features1 = ['DAYS_BIRTH','CODE_GENDER','NAME_FAMILY_STATUS']
 protected_features2 = ['AGE','CODE_GENDER','MARITAL_STATUS']
 imp_cols = ['DAYS_EMPLOYED','ORGANIZATION_TYPE','DAYS_LAST_PHONE_CHANGE','FLAG_DOCUMENT_3','NAME_EDUCATION_TYPE','LIVINGAREA_MEDI']

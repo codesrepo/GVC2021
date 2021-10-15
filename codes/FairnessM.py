@@ -53,10 +53,10 @@ class FairnessMaster(object):
     #statistical_parity_difference
     
     
-    for i in range(0,100):
+    for i in range(0,1000):
       try:
-        thresh = i*0.01
-        thresh_list.append(np.round(thresh,2))
+        thresh = i*0.001
+        thresh_list.append(np.round(thresh,3))
         temp_p = df_privileged.copy()
         temp_up = df_underprivileged.copy()
 
