@@ -6,11 +6,11 @@ import numpy as np
 
 param_data_preprocessing = {
         
-        "train_path":"/home/coder/GVC2021/submission/data/application_train.csv",
-        "bureau_path":"/home/coder/GVC2021/submission/data/bureau.csv",
-        "out_path":"/home/coder/GVC2021/submission/output/",
-        "ntc_train_path":"/home/coder/GVC2021/submission/output/",
-        "ntc_test_path":"/home/coder/GVC2021/submission/output/",
+        "train_path":"/home/coder/project/GVC2021/data/application_train.csv",
+        "bureau_path":"/home/coder/project/GVC2021/data/bureau.csv",
+        "out_path":"/home/coder/project/GVC2021/output/",
+        "ntc_train_path":"/home/coder/project/GVC2021/output/",
+        "ntc_test_path":"/home/coder/project/GVC2021/output/",
         
         
         
@@ -19,8 +19,8 @@ param_data_preprocessing = {
 
 param_fairness = {
         
-        "data_path":"/home/coder/GVC2021/submission/output/final_outcome.csv",
-        "out_path":"/home/coder/GVC2021/submission/output/",
+        "data_path":"/home/coder/project/GVC2021/output/final_outcome.csv",
+        "out_path":"/home/coder/project/GVC2021/output/",
         "target":"TARGET",
         "score":"prediction_prob",
         "protected_attribute_list":['AGE',"CODE_GENDER","MARITAL_STATUS"],
@@ -34,8 +34,8 @@ param_fairness = {
 
 param_ROC = {
         
-        "data_path":"/home/coder/GVC2021/submission/output/ROC_corrected_data_1.csv",
-        "out_path":"/home/coder/GVC2021/submission/output/",
+        "data_path":"/home/coder/project/GVC2021/output/ROC_corrected_data_1.csv",
+        "out_path":"/home/coder/project/GVC2021/output/",
         "target":"TARGET",
         "score":"prediction_prob",
         "apply_ROC_attribute":'AGE',
@@ -59,8 +59,8 @@ param_ROC = {
 param_UBR = {
         
         
-        "data_path":"C:/Veritas/Submission/APIX/Veritas/data/df_UBR.csv",
-        "out_path":"C:/Veritas/Submission/APIX/Veritas/output/UBR/",
+        "data_path":"/home/coder/project/GVC2021/output/UBR_corrected_data.csv",
+        "out_path":"/home/coder/project/GVC2021/output/",
         "score":"p_np_score_fix"
         }
 

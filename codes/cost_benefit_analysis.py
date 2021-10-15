@@ -5,10 +5,9 @@ import pandas as pd
 
 #import pipeline as Pipeline
 
-data_path_list = [param_fairness["data_path"],param_ROC["data_path"]]
-data_type_list = ["original","ROC"]
-vertical_list = [0.92,0.94]
-#param_fairness["out_path"] = "C:/Veritas/Submission/APIX/Veritas/output/cost_benefit_analysis/"
+data_path_list = [param_fairness["data_path"],param_UBR["data_path"],param_ROC["data_path"]]
+data_type_list = ["original","UBR","ROC"]
+vertical_list = [0.92,0.93,0.94]
 if __name__ == '__main__':
     
     metric_summary_paths=[]
