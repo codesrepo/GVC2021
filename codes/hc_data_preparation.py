@@ -20,8 +20,8 @@ import numpy as np
 
 from utils import param_data_preprocessing
 
-train = pd.read_csv(param_data_preprocessing["train_path"],nrows=10000)
-bureau = pd.read_csv(param_data_preprocessing["bureau_path"],nrows=10000)
+train = pd.read_csv(param_data_preprocessing["train_path"])
+bureau = pd.read_csv(param_data_preprocessing["bureau_path"])
 bureau.drop_duplicates("SK_ID_CURR",keep="last",inplace=True)
 bureau["bureau_presence"]=1
 
