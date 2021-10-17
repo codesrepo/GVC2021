@@ -69,7 +69,7 @@ param_UBR = {
         
         "data_path":"/home/coder/project/GVC2021/output/UBR_corrected_data.csv",
         "out_path":"/home/coder/project/GVC2021/output/",
-        "score":"cd .."
+        "score":"p_np_score_fix"
         }
 
 
